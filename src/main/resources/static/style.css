@@ -1,0 +1,534 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 245px;
+    background: #111827;
+    color: white;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 55px;
+}
+
+.brand-icon {
+    background: #635bff;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.brand h2 {
+    font-size: 19px;
+}
+
+.brand span {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+nav {
+    display: grid;
+    gap: 12px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #aeb7c7;
+    padding: 13px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+nav a.active,
+nav a:hover {
+    background: #29334a;
+    color: white;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 14px 5px;
+    font-size: 12px;
+    color: #aeb7c7;
+}
+
+.online-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    margin-right: 6px;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 32px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+h1 {
+    font-size: 27px;
+}
+
+.topbar p,
+.section-heading p {
+    color: #7b8495;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.environment {
+    color: #087f5b;
+    background: #dff8ed;
+    padding: 9px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 13px;
+    font-weight: 600;
+}
+
+.refresh-btn {
+    background: #635bff;
+    color: white;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 19px;
+}
+
+.section-heading h2 {
+    font-size: 19px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e9edf3;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.025);
+}
+
+.stat-card span {
+    color: #737e90;
+    font-size: 13px;
+}
+
+.stat-card h2 {
+    font-size: 29px;
+    margin: 15px 0 8px;
+}
+
+.stat-card small {
+    color: #929bad;
+    font-size: 11px;
+}
+
+.security-banner {
+    margin: 28px 0 35px;
+    padding: 27px;
+    background: linear-gradient(110deg, #171d38, #35306e);
+    border-radius: 13px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.security-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #a9a4ff;
+    font-weight: bold;
+}
+
+.security-banner h2 {
+    margin: 12px 0 9px;
+    font-size: 21px;
+}
+
+.security-banner p {
+    color: #c4c7dc;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.shield {
+    font-size: 60px;
+    color: #aaa5ff;
+    padding: 0 25px;
+}
+
+.payments-section {
+    background: white;
+    padding: 24px;
+    border: 1px solid #e9edf3;
+    border-radius: 12px;
+}
+
+.record-count {
+    font-size: 12px;
+    color: #7b8495;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+    border: 1px solid #dfe4ec;
+    border-radius: 7px;
+    padding: 11px;
+    font-size: 13px;
+    outline: none;
+}
+
+.filters input {
+    width: 280px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.7px;
+    color: #8992a2;
+    background: #f8f9fc;
+    padding: 15px 12px;
+}
+
+td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #edf0f5;
+    font-size: 12px;
+}
+
+.status {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.PAID {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.APPROVED {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.ESCALATED {
+    background: #fff1cf;
+    color: #a16207;
+}
+
+.BLOCKED {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.REJECTED {
+    background: #f1f0f5;
+    color: #626477;
+}
+
+.PENDING,
+.UNKNOWN {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.ai-decision {
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.approve-btn {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.reject-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.paypal-btn {
+    background: #e8edff;
+    color: #3048a5;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.loading,
+.empty {
+    text-align: center;
+    padding: 35px;
+    color: #8992a2;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 11px;
+    color: #929bad;
+}
+
+.toast {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 14px 20px;
+    background: #172033;
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+    z-index: 10;
+}
+
+@media (max-width: 950px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .top-actions {
+        flex-wrap: wrap;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .filters input {
+        width: 100%;
+    }
+
+    .security-banner {
+        padding: 20px;
+    }
+
+    .shield {
+        display: none;
+    }
+}
+
+/* Create Payment button */
+.payment-heading-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.create-payment-btn {
+    background: #625bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.create-payment-btn:hover {
+    background: #4942df;
+}
+
+.create-payment-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Modal background */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+/* Modal box */
+.payment-modal {
+    background: white;
+    width: 100%;
+    max-width: 480px;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.modal-header h2 {
+    margin: 0 0 7px;
+    color: #17213b;
+}
+
+.modal-header p {
+    margin: 0;
+    color: #718096;
+    font-size: 13px;
+}
+
+.modal-close {
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.payment-modal label {
+    display: block;
+    margin: 14px 0 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #344054;
+}
+
+.payment-modal input,
+.payment-modal textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #d7deea;
+    border-radius: 7px;
+    font: inherit;
+    outline: none;
+}
+
+.payment-modal input:focus,
+.payment-modal textarea:focus {
+    border-color: #625bff;
+}
+
+.payment-modal textarea {
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cancel-btn {
+    background: #eef1f6;
+    color: #344054;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    cursor: pointer;
+}

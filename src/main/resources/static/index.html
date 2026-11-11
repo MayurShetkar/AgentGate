@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentGate | AI Payment Security</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">A</div>
+            <div>
+                <h2>AgentGate</h2>
+                <span>AI Payment Security</span>
+            </div>
+        </div>
+
+        <nav>
+            <a class="active" href="#overview">▦ Dashboard</a>
+            <a href="#payments">⇄ Payments</a>
+            <a href="#security">◇ AI Security</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <span class="online-dot"></span>
+            Sandbox Environment
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Payment Dashboard</h1>
+                <p>Monitor and control AI agent transactions.</p>
+            </div>
+
+            <div class="top-actions">
+                <span class="environment">● PAYPAL SANDBOX</span>
+                <button id="refreshBtn" class="refresh-btn">
+                    ↻ Refresh
+                </button>
+            </div>
+        </header>
+
+        <section id="overview">
+            <div class="section-heading">
+                <div>
+                    <h2>Overview</h2>
+                    <p>Live payment activity from AgentGate</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span>Total Requests</span>
+                    <h2 id="totalCount">0</h2>
+                    <small>All payment requests</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Paid Transactions</span>
+                    <h2 id="paidCount">0</h2>
+                    <small>Successfully captured</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Awaiting Review</span>
+                    <h2 id="escalatedCount">0</h2>
+                    <small>Human approval required</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Blocked</span>
+                    <h2 id="blockedCount">0</h2>
+                    <small>Risk policy prevented payment</small>
+                </div>
+            </div>
+        </section>
+
+        <section id="security" class="security-banner">
+            <div>
+                <span class="security-label">AI SECURITY ENGINE</span>
+                <h2>Every transaction. One trust layer.</h2>
+                <p>
+                    Policy engine enforces hard limits.
+                    AI reviews risky transactions.
+                    Humans control escalated payments.
+                </p>
+            </div>
+            <div class="shield">⬡</div>
+        </section>
+
+        <section id="payments" class="payments-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Payment Requests</h2>
+                    <p>Review and manage agent transactions</p>
+                </div>
+
+                <div class="payment-heading-actions">
+                    <span id="recordCount" class="record-count">0 records</span>
+                    <button id="openPaymentModal" class="create-payment-btn">
+                        + Create Payment
+                    </button>
+                </div>
+            </div>
+
+            <div class="filters">
+                <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search vendor or agent..."
+                >
+
+                <select id="statusFilter">
+                    <option value="ALL">All statuses</option>
+                    <option value="PAID">Paid</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="ESCALATED">Escalated</option>
+                    <option value="BLOCKED">Blocked</option>
+                    <option value="REJECTED">Rejected</option>
+                    <option value="PENDING">Pending</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>VENDOR</th>
+                        <th>AGENT</th>
+                        <th>AMOUNT</th>
+                        <th>AI DECISION</th>
+                        <th>STATUS</th>
+                        <th>ACTION</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="paymentsTable">
+                    <tr>
+                        <td colspan="7" class="loading">
+                            Loading payment requests...
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <footer>
+            AgentGate · AI-powered payment trust layer · PayPal Sandbox
+        </footer>
+
+    </main>
+</div>
+
+<!-- CREATE PAYMENT MODAL -->
+<div id="paymentModal" class="modal-overlay">
+    <div class="payment-modal">
+
+        <div class="modal-header">
+            <div>
+                <h2>Create Payment Request</h2>
+                <p>Submit a transaction for AI security review.</p>
+            </div>
+
+            <button type="button" id="closePaymentModal" class="modal-close">
+                &times;
+            </button>
+        </div>
+
+        <form id="createPaymentForm">
+
+            <label for="agentId">Agent ID</label>
+            <input
+                    type="text"
+                    id="agentId"
+                    name="agentId"
+                    value="shopping-agent-01"
+                    required
+            >
+
+            <label for="vendor">Vendor Name</label>
+            <input
+                    type="text"
+                    id="vendor"
+                    name="vendor"
+                    placeholder="e.g. Amazon"
+                    required
+            >
+
+            <label for="amount">Amount (USD)</label>
+            <input
+                    type="number"
+                    id="amount"
+                    name="amount"
+                    placeholder="49.99"
+                    min="0.01"
+                    step="0.01"
+                    required
+            >
+
+            <label for="description">Payment Description</label>
+            <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Describe what the agent is purchasing..."
+                    rows="3"
+                    required
+            ></textarea>
+
+            <div class="modal-actions">
+                <button type="button" id="cancelPayment" class="cancel-btn">
+                    Cancel
+                </button>
+
+                <button type="submit" id="submitPaymentBtn" class="create-payment-btn">
+                    Submit Payment
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
